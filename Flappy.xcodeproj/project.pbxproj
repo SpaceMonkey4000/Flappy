@@ -59,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				3A82ED701ED27785008E0B4C /* Assets.xcassets */,
+				3A82ED691ED27785008E0B4C /* GameScene.swift */,
 				3A82ED7B1ED278BE008E0B4C /* Dad Only Keep Out */,
 			);
 			path = Flappy;
@@ -70,7 +71,6 @@
 				3A82ED631ED27785008E0B4C /* AppDelegate.swift */,
 				3A82ED6B1ED27785008E0B4C /* GameViewController.swift */,
 				3A82ED651ED27785008E0B4C /* GameScene.sks */,
-				3A82ED691ED27785008E0B4C /* GameScene.swift */,
 				3A82ED6D1ED27785008E0B4C /* Main.storyboard */,
 				3A82ED721ED27785008E0B4C /* LaunchScreen.storyboard */,
 				3A82ED751ED27785008E0B4C /* Info.plist */,
