@@ -14,6 +14,7 @@
 		3A82ED6F1ED27785008E0B4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A82ED6D1ED27785008E0B4C /* Main.storyboard */; };
 		3A82ED711ED27785008E0B4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A82ED701ED27785008E0B4C /* Assets.xcassets */; };
 		3A82ED741ED27785008E0B4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A82ED721ED27785008E0B4C /* LaunchScreen.storyboard */; };
+		77269EF31ED521A700D5754F /* TappableSpriteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77269EF21ED521A700D5754F /* TappableSpriteNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		3A82ED701ED27785008E0B4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A82ED731ED27785008E0B4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A82ED751ED27785008E0B4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		77269EF21ED521A700D5754F /* TappableSpriteNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TappableSpriteNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 			children = (
 				3A82ED631ED27785008E0B4C /* AppDelegate.swift */,
 				3A82ED6B1ED27785008E0B4C /* GameViewController.swift */,
+				77269EF21ED521A700D5754F /* TappableSpriteNode.swift */,
 				3A82ED651ED27785008E0B4C /* GameScene.sks */,
 				3A82ED6D1ED27785008E0B4C /* Main.storyboard */,
 				3A82ED721ED27785008E0B4C /* LaunchScreen.storyboard */,
@@ -152,6 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A82ED6A1ED27785008E0B4C /* GameScene.swift in Sources */,
+				77269EF31ED521A700D5754F /* TappableSpriteNode.swift in Sources */,
 				3A82ED6C1ED27785008E0B4C /* GameViewController.swift in Sources */,
 				3A82ED641ED27785008E0B4C /* AppDelegate.swift in Sources */,
 			);
