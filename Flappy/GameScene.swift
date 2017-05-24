@@ -2,35 +2,100 @@
 import SpriteKit
 
 class GameScene: SKScene {
-
-    let bird = TappableSpriteNode(imageNamed: "Flappy-5x")
- 
+    
+    let rightarrow = TappableSpriteNode(imageNamed: "UI-right")
+    let leftarrow = TappableSpriteNode(imageNamed: "UI-left")
+    let uparrow = TappableSpriteNode(imageNamed: "UI-up")
+    let downarrow = TappableSpriteNode(imageNamed: "UI-down")
+    
     override func didMove(to view: SKView) {
-        backgroundColor = UIColor.init(red: 0.8, green: 1.0, blue: 1.0, alpha: 1.0)
-
+        backgroundColor = UIColor.init(red: 0.5, green: 1.0, blue: 1.0, alpha: 1.0)
+        
+        
+        let bird = SKSpriteNode(imageNamed: "Flappy-5x")
         
         bird.position = CGPoint(x: 0, y: 0)
         bird.zRotation = .pi * 0
         addChild(bird)
         
+        rightarrow.position = CGPoint(x: 299, y: -330)
+        rightarrow.zRotation = .pi * 0
+        addChild(rightarrow)
+        leftarrow.position = CGPoint(x: 188, y: -330)
+        leftarrow.zRotation = .pi * 0
+        addChild(leftarrow)
+        uparrow.position = CGPoint(x:243,y:-225)
+        uparrow.zRotation = .pi * 0
+        addChild(uparrow)
+        downarrow.position = CGPoint(x:243,y:-435)
+        downarrow.zRotation = .pi * 0
+        addChild(downarrow)
+        
+        
+        
         let waitAction = SKAction.wait(forDuration: 3.0)
-        let moveAction = SKAction.move(to: CGPoint(x: -150, y: 200), duration: 5.0)
         let rotateAction = SKAction.rotate(byAngle: .pi*1.0, duration: 5.0)
         let sizeAction = SKAction.resize(toWidth: 700, height: 400, duration: 2.0)
-        let moveByAction = SKAction.moveBy(x: 3, y: 3, duration: 0.05)
-
-        func moveUntilNotTouched() {
-            bird.run(moveByAction) {
-                if !self.bird.isTouched {
+        let moveRight = SKAction.moveBy(x: 4, y: 0, duration: 0.01)
+        let moveLeft = SKAction.moveBy(x: -4, y: 0, duration: 0.01)
+        let moveUp = SKAction.moveBy(x:0, y: 4, duration: 0.01)
+        let moveDown = SKAction.moveBy(x:0, y: -4, duration: 0.01)
+        
+        
+        func moveRightUntilNotTouched() {
+            bird.run(moveRight) {
+                if !self.rightarrow.isTouched {
                     return
                 }
-                moveUntilNotTouched()
+                moveRightUntilNotTouched()
+            }
+            
+        }
+        
+        
+        func moveLeftUntilNotTouched() {
+            bird.run(moveLeft) {
+                if !self.leftarrow.isTouched {
+                    return
+                }
+                moveLeftUntilNotTouched()
             }
         }
         
-        bird.didTap = {
-            moveUntilNotTouched()
+        func moveUpUntilNotTouched() {
+            bird.run(moveUp) {
+                if !self.uparrow.isTouched {
+                    return
+                }
+                moveUpUntilNotTouched()
+            }
         }
-    }
+        func moveDownUntilNotTouched() {
+            bird.run(moveDown) {
+                if !self.downarrow.isTouched {
+                    return
+                }
+                moveDownUntilNotTouched()
+            }
+        }
 
+        
+        rightarrow.didTap = {
+            moveRightUntilNotTouched()
+            
+            
+        }
+        leftarrow.didTap = {
+            moveLeftUntilNotTouched()
+        }
+        uparrow.didTap = {
+            moveUpUntilNotTouched()
+            
+        }
+        downarrow.didTap = {
+            moveDownUntilNotTouched()
+            
+        }
+        
+    }
 }
