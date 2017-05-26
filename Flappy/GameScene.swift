@@ -7,7 +7,7 @@ class GameScene: SKScene {
     let leftarrow = TappableSpriteNode(imageNamed: "UI-left")
     let uparrow = TappableSpriteNode(imageNamed: "UI-up")
     let downarrow = TappableSpriteNode(imageNamed: "UI-down")
-    let testarrow = TappableSpriteNode(imageNamed: "UI-down")
+    let testarrow = TappableSpriteNode(imageNamed: "UI-shoot")
     
     override func didMove(to view: SKView) {
         backgroundColor = UIColor.init(red: 0.5, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -91,7 +91,7 @@ class GameScene: SKScene {
         }
         
         func shoot() {
-            let bullet = SKSpriteNode (imageNamed: "Blue")
+            let bullet = SKSpriteNode (imageNamed: "bullet")
             bullet.zPosition = bird.zPosition - 1.0
             let movetobird = SKAction.move(to: bird.position, duration: 0)
             let shoot2 = SKAction.sequence([movetobird,shoots])
