@@ -10,12 +10,12 @@ class GameScene: SKScene {
     let testarrow = TappableSpriteNode(imageNamed: "UI-shoot")
     
     override func didMove(to view: SKView) {
-        backgroundColor = UIColor.init(red: 0.5, green: 1.0, blue: 1.0, alpha: 1.0)
+        backgroundColor = UIColor.init(red: 0.0, green: 0.5, blue: 1.0, alpha: 1.0)
         
         
         let bird = SKSpriteNode(imageNamed: "Flappy-5x")
         
-
+        
         
         
         bird.position = CGPoint(x: 0, y: 0)
@@ -44,15 +44,15 @@ class GameScene: SKScene {
         let waitAction = SKAction.wait(forDuration: 3.0)
         let rotateAction = SKAction.rotate(byAngle: .pi*1.0, duration: 5.0)
         let sizeAction = SKAction.resize(toWidth: 200, height: 750, duration: 2.0)
-        let moveRight = SKAction.moveBy(x: 4, y: 0, duration: 0.01)
-        let moveLeft = SKAction.moveBy(x: -4, y: 0, duration: 0.01)
-        let moveUp = SKAction.moveBy(x:0, y: 4, duration: 0.01)
-        let moveDown = SKAction.moveBy(x:0, y: -4, duration: 0.01)
-        let shoots = SKAction.moveBy(x:900, y: 0, duration: 1.5)
-        let shoots2 = SKAction.moveBy(x:900, y: 100, duration: 2)
-        let shoots3 = SKAction.moveBy(x:900, y: -100, duration: 2)
-        let shoots4 = SKAction.moveBy(x:900, y: 200, duration: 2.5)
-        let shoots5 = SKAction.moveBy(x:900, y: -200, duration: 2.5)
+        let moveRight = SKAction.moveBy(x: 10, y: 0, duration: 0.01)
+        let moveLeft = SKAction.moveBy(x: -10, y: 0, duration: 0.01)
+        let moveUp = SKAction.moveBy(x:0, y: 10, duration: 0.01)
+        let moveDown = SKAction.moveBy(x:0, y: -10, duration: 0.01)
+        let shoots = SKAction.moveBy(x:900, y: 0, duration: 1)
+        let shoots2 = SKAction.moveBy(x:900, y: 100, duration: 1.25)
+        let shoots3 = SKAction.moveBy(x:900, y: -100, duration: 1.25)
+        let shoots4 = SKAction.moveBy(x:900, y: 200, duration: 1.5)
+        let shoots5 = SKAction.moveBy(x:900, y: -200, duration: 1.5)
         
         
         
@@ -112,15 +112,25 @@ class GameScene: SKScene {
             let shoot5 = SKAction.sequence([movetobird,shoots4])
             let shoot6 = SKAction.sequence([movetobird,shoots5])
             addChild(bullet)
-            bullet.run(shoot2)
+            bullet.run(shoot2) {
+                bullet.removeFromParent()
+            }
             addChild(bullet2)
-            bullet2.run(shoot3)
+            bullet2.run(shoot3){
+                bullet.removeFromParent()
+            }
             addChild(bullet3)
-            bullet3.run(shoot4)
+            bullet3.run(shoot4){
+                bullet.removeFromParent()
+            }
             addChild(bullet4)
-            bullet4.run(shoot5)
+            bullet4.run(shoot5){
+                bullet.removeFromParent()
+            }
             addChild(bullet5)
-            bullet5.run(shoot6)
+            bullet5.run(shoot6){
+                bullet.removeFromParent()
+            }
         }
         
         rightarrow.didTap = {
