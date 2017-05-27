@@ -48,7 +48,11 @@ class GameScene: SKScene {
         let moveLeft = SKAction.moveBy(x: -4, y: 0, duration: 0.01)
         let moveUp = SKAction.moveBy(x:0, y: 4, duration: 0.01)
         let moveDown = SKAction.moveBy(x:0, y: -4, duration: 0.01)
-        let shoots = SKAction.moveBy(x:900, y: 0, duration: 2)
+        let shoots = SKAction.moveBy(x:900, y: 0, duration: 1.5)
+        let shoots2 = SKAction.moveBy(x:900, y: 100, duration: 2)
+        let shoots3 = SKAction.moveBy(x:900, y: -100, duration: 2)
+        let shoots4 = SKAction.moveBy(x:900, y: 200, duration: 2.5)
+        let shoots5 = SKAction.moveBy(x:900, y: -200, duration: 2.5)
         
         
         
@@ -92,11 +96,31 @@ class GameScene: SKScene {
         
         func shoot() {
             let bullet = SKSpriteNode (imageNamed: "bullet")
+            let bullet2 = SKSpriteNode (imageNamed: "bullet")
+            let bullet3 = SKSpriteNode (imageNamed: "bullet")
+            let bullet4 = SKSpriteNode (imageNamed: "bullet")
+            let bullet5 = SKSpriteNode (imageNamed: "bullet")
             bullet.zPosition = bird.zPosition - 1.0
+            bullet2.zPosition = bird.zPosition - 1.0
+            bullet3.zPosition = bird.zPosition - 1.0
+            bullet4.zPosition = bird.zPosition - 1.0
+            bullet5.zPosition = bird.zPosition - 1.0
             let movetobird = SKAction.move(to: bird.position, duration: 0)
             let shoot2 = SKAction.sequence([movetobird,shoots])
+            let shoot3 = SKAction.sequence([movetobird,shoots2])
+            let shoot4 = SKAction.sequence([movetobird,shoots3])
+            let shoot5 = SKAction.sequence([movetobird,shoots4])
+            let shoot6 = SKAction.sequence([movetobird,shoots5])
             addChild(bullet)
             bullet.run(shoot2)
+            addChild(bullet2)
+            bullet2.run(shoot3)
+            addChild(bullet3)
+            bullet3.run(shoot4)
+            addChild(bullet4)
+            bullet4.run(shoot5)
+            addChild(bullet5)
+            bullet5.run(shoot6)
         }
         
         rightarrow.didTap = {
