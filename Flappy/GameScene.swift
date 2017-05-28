@@ -55,8 +55,6 @@ class GameScene: SKScene {
         let shoots5 = SKAction.moveBy(x:900, y: -200, duration: 1.5)
         let shoots6 = SKAction.moveBy(x:900, y: -300, duration: 1.75)
         let shoots7 = SKAction.moveBy(x:900, y: 300, duration: 1.75)
-        let shoots8 = SKAction.moveBy(x:900, y: 400, duration: 2)
-        let shoots9 = SKAction.moveBy(x:900, y: -400, duration: 2)
         
         
         
@@ -105,8 +103,6 @@ class GameScene: SKScene {
             let bullet5 = SKSpriteNode (imageNamed: "bullet")
             let bullet6 = SKSpriteNode (imageNamed: "bullet")
             let bullet7 = SKSpriteNode (imageNamed: "bullet")
-            let bullet8 = SKSpriteNode (imageNamed: "bullet")
-            let bullet9 = SKSpriteNode (imageNamed: "bullet")
             bullet.zPosition = bird.zPosition - 1.0
             bullet2.zPosition = bird.zPosition - 1.0
             bullet3.zPosition = bird.zPosition - 1.0
@@ -114,8 +110,6 @@ class GameScene: SKScene {
             bullet5.zPosition = bird.zPosition - 1.0
             bullet6.zPosition = bird.zPosition - 1.0
             bullet7.zPosition = bird.zPosition - 1.0
-            bullet8.zPosition = bird.zPosition - 1.0
-            bullet9.zPosition = bird.zPosition - 1.0
             let movetobird = SKAction.move(to: bird.position, duration: 0)
             let shoot2 = SKAction.sequence([movetobird,shoots])
             let shoot3 = SKAction.sequence([movetobird,shoots2])
@@ -124,8 +118,7 @@ class GameScene: SKScene {
             let shoot6 = SKAction.sequence([movetobird,shoots5])
             let shoot7 = SKAction.sequence([movetobird,shoots6])
             let shoot8 = SKAction.sequence([movetobird,shoots7])
-            let shoot9 = SKAction.sequence([movetobird,shoots8])
-            let shoot10 = SKAction.sequence([movetobird,shoots9])
+
             
             
             shootBullet(node: bullet, action: shoot2)
@@ -135,8 +128,7 @@ class GameScene: SKScene {
             shootBullet(node: bullet5, action: shoot6)
             shootBullet(node: bullet6, action: shoot7)
             shootBullet(node: bullet7, action: shoot8)
-            shootBullet(node: bullet8, action: shoot9)
-            shootBullet(node: bullet9, action: shoot10)
+
         }
         
         rightarrow.didTap = {
