@@ -9,6 +9,8 @@ class GameScene: SKScene {
     let downarrow = TappableSpriteNode(imageNamed: "UI-down")
     let testarrow = TappableSpriteNode(imageNamed: "UI-shoot")
     
+    var enemyTimer: Timer?
+    
     override func didMove(to view: SKView) {
         backgroundColor = UIColor.init(red: 0.0, green: 0.5, blue: 1.0, alpha: 1.0)
         
@@ -45,10 +47,11 @@ class GameScene: SKScene {
         let waitAction = SKAction.wait(forDuration: 3.0)
         let rotateAction = SKAction.rotate(byAngle: .pi*1.0, duration: 5.0)
         let sizeAction = SKAction.resize(toWidth: 200, height: 750, duration: 2.0)
-        let moveRight = SKAction.moveBy(x: 10, y: 0, duration: 0.01)
-        let moveLeft = SKAction.moveBy(x: -10, y: 0, duration: 0.01)
-        let moveUp = SKAction.moveBy(x:0, y: 10, duration: 0.01)
-        let moveDown = SKAction.moveBy(x:0, y: -10, duration: 0.01)
+        let moveRight = SKAction.moveBy(x: 8, y: 0, duration: 0.01)
+        let moveLeft = SKAction.moveBy(x: -8, y: 0, duration: 0.01)
+        let moveUp = SKAction.moveBy(x:0, y: 8, duration: 0.01)
+        let moveDown = SKAction.moveBy(x:0, y: -8, duration: 0.01)
+        let Glide = SKAction.moveBy(x:-1000, y: 0, duration: 4)
         let shoots = SKAction.moveBy(x:900, y: 0, duration: 1)
         let shoots2 = SKAction.moveBy(x:900, y: 100, duration: 1.25)
         let shoots3 = SKAction.moveBy(x:900, y: -100, duration: 1.25)
@@ -61,7 +64,7 @@ class GameScene: SKScene {
         
         func moveRightUntilNotTouched() {
             bird.run(moveRight) {
-                if !self.rightarrow.isTouched {
+                if !self.rightarrow.isTouched || bird.position.x > 330 {
                     return
                 }
                 moveRightUntilNotTouched()
@@ -72,7 +75,7 @@ class GameScene: SKScene {
         
         func moveLeftUntilNotTouched() {
             bird.run(moveLeft) {
-                if !self.leftarrow.isTouched {
+                if !self.leftarrow.isTouched || bird.position.x < -330 {
                     return
                 }
                 moveLeftUntilNotTouched()
@@ -81,7 +84,7 @@ class GameScene: SKScene {
         
         func moveUpUntilNotTouched() {
             bird.run(moveUp) {
-                if !self.uparrow.isTouched {
+                if !self.uparrow.isTouched || bird.position.y > 475 {
                     return
                 }
                 moveUpUntilNotTouched()
@@ -89,7 +92,7 @@ class GameScene: SKScene {
         }
         func moveDownUntilNotTouched() {
             bird.run(moveDown) {
-                if !self.downarrow.isTouched {
+                if !self.downarrow.isTouched || bird.position.y < -455 {
                     return
                 }
                 moveDownUntilNotTouched()
@@ -155,6 +158,15 @@ class GameScene: SKScene {
             
         }
         
+        
+        enemyTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
+            let y = random(min: -512, max: 512)
+            let Enemy = SKSpriteNode(imageNamed: "redflappy")
+            Enemy.position = CGPoint(x: 500, y: y)
+            self.addChild(Enemy)
+            Enemy.run(Glide)
+            
+        }
         
     }
     
