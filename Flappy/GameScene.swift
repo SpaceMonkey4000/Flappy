@@ -14,13 +14,14 @@ class GameScene: SKScene {
         
         
         let bird = SKSpriteNode(imageNamed: "Flappy-5x")
-        
-        
-        
-        
         bird.position = CGPoint(x: 0, y: 0)
         bird.zRotation = .pi * 0
         addChild(bird)
+        let BGsprite = SKSpriteNode(imageNamed: "background")
+        BGsprite.position = CGPoint(x: 0, y: 0)
+        BGsprite.zRotation = .pi * 0
+        BGsprite.zPosition = bird.zPosition - 9999.0
+        addChild(BGsprite)
         
         rightarrow.position = CGPoint(x: 299, y: -330)
         rightarrow.zRotation = .pi * 0
